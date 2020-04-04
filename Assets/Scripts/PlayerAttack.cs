@@ -18,13 +18,14 @@ public class PlayerAttack : MonoBehaviour
     public BoundAttack SpecialAttackTwo;
 
     [Header("Controls")]
-    public string BasicAttackButton = "Fire1";    
+    public string BasicAttackButton = "Fire1";
+    public Attack BasicAttack;
 
     private void Update()
     {        
         if(Input.GetButtonDown(BasicAttackButton))
         {
-            Debug.Log("I Attacked");
+            BasicAttack.Activate();
         }
 
         
