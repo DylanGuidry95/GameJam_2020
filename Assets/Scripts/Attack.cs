@@ -33,9 +33,4 @@ public class Attack : MonoBehaviour
         if (!CanActivate)
             return;
     }
-
-    public virtual void OnCollisionEnter(Collision collision)
-    {
-        
-    }
 }

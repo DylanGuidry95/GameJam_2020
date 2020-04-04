@@ -6,7 +6,7 @@ public class Blaster : Attack
 {
     public float Range;
 
-    public float Damage;
+    public int Damage;
 
     public ParticleSystem ProjectileParticle;
 
@@ -23,7 +23,9 @@ public class Blaster : Attack
         {
             if (hit.collider.gameObject != null && hit.collider.gameObject != ProjectileParticle.gameObject)
             {
-                Debug.Log("Hit");
+                Debug.Log("hit");
+                if (hit.collider.GetComponent<Health>())
+                    hit.collider.GetComponent<Health>().TakeDamage(Damage);
             }
         }
     }
