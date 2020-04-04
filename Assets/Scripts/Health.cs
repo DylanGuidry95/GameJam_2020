@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public int MaxHealth;
-    public int CurrentHealth;
+    public float  MaxHealth;
+    public float CurrentHealth;
 
     private void Awake()
     {
@@ -18,7 +18,7 @@ public class Health : MonoBehaviour
             Destroy(this.gameObject);
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(float amount)
     {
         CurrentHealth -= amount;
     }

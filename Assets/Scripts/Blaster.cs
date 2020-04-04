@@ -6,7 +6,7 @@ public class Blaster : Attack
 {
     public float Range;
 
-    public int Damage;
+    public float Damage;
 
     public ParticleSystem ProjectileParticle;
 
@@ -36,14 +36,17 @@ public class Blaster : Attack
         mainSystem.startLifetime = Range / 50;        
     }
 
-    [ContextMenu("a")]
-    void test()
+    public override void Fuse(Attack other)
     {
-        ProjectileParticle.Play();
+        base.Fuse(other);
+
+        Damage *= PowerLevel;
     }
 
     private void OnDrawGizmos()
     {
+        if (!this.enabled)
+            return;
         Gizmos.DrawLine(transform.position + transform.forward, transform.position + (transform.forward * Range));
     }
 }

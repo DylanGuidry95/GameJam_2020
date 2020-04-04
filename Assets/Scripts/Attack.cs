@@ -10,6 +10,14 @@ public class Attack : MonoBehaviour
 
     private float timer;
 
+    public Color ColorCue;
+
+    public bool IsHold;
+
+    public int PowerLevel;
+
+    public bool IsSpecialAttack;
+
     private bool CanActivate
     {
         get
@@ -32,5 +40,32 @@ public class Attack : MonoBehaviour
     {
         if (!CanActivate)
             return;
+    }
+
+    public virtual void DeActivate()
+    {
+        timer = 0;
+    }
+
+    public virtual void Fuse(Attack other)
+    {
+        if(other.PowerLevel == PowerLevel && other.AttackName == AttackName)
+        {
+            PowerLevel++;
+        }
+        else
+        {
+            return;
+        }
+    }
+
+    public static bool operator==(Attack a, Attack b)
+    {        
+        return b.PowerLevel == a.PowerLevel && b.AttackName == a.AttackName;
+    }
+
+    public static bool operator !=(Attack a, Attack b)
+    {        
+        return b.PowerLevel != a.PowerLevel && b.AttackName != a.AttackName;
     }
 }
